@@ -5,7 +5,8 @@ import path from 'path'
 import connectDB from './config/db.js'
 import { clerkMiddleware } from "./middleware/clerk.middleware.js";
 import incomeRoute from "./routes/income.route.js"
-//import expenseRoute from "./routes/expense.route.js"
+import expenseRoute from "./routes/expense.route.js"
+import dashboardRoute from "./routes/dashboard.route.js"
 
 
 
@@ -24,8 +25,9 @@ app.use(express.json());
 await connectDB()
 
 app.use("/api/v1/auth", clerkMiddleware)
-app.use("/api/v1/income", clerkMiddleware,incomeRoute)
-//app.use("/api/v1/expense", expenseRoute)
+app.use("/api/v1/income", clerkMiddleware, incomeRoute)
+app.use("/api/v1/expense", clerkMiddleware, expenseRoute)
+app.use("/api/v1/dashboard", clerkMiddleware, dashboardRoute)
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
