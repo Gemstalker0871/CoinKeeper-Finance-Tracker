@@ -31,6 +31,10 @@ const SideMenu = ({ activeMenu }) => {
         <SignedIn>
           <UserButton appearance={userButtonAppearance} />
         </SignedIn>
+        <p className="text-sm font-medium text-gray-700 mt-2">
+              {user.fullName || user.username || user.primaryEmailAddress?.emailAddress}
+            </p>
+        
       </div>
 
       {/* Menu items */}

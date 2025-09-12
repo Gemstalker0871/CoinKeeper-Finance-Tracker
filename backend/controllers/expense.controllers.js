@@ -4,15 +4,15 @@ import Expense from "../models/Expense.model.js"
 export const addExpense = async (req, res) => {
     const userId = req.auth.userId;
     try {
-        const { source, amount , date } = req.body;
+        const { category, amount , date } = req.body;
 
-        if(!source || !amount || !date){
+        if(!category || !amount || !date){
             return res.status(400).json({message: "All fields are required"})
         }
 
         const newExpense = new Expense ({
             userId,
-            source,
+            category,
             amount,
             date: new Date(date)
         })
@@ -50,7 +50,7 @@ export const downloadexpense = async (req, res) => {
         const expense = await Expense.find({userId}).sort({date: -1});
 
         const data = expense.map((item) => ({
-            Source: item.source,
+            Category: item.category,
             Amount: item.amount,
             Date: item.date
         }))
