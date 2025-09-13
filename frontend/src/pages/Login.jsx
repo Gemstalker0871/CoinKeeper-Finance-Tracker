@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { getToken, isSignedIn, isLoaded } = useAuth(); // 👈 include isLoaded
+  const { getToken, isSignedIn, isLoaded } = useAuth();
 
   const userButtonAppearance = {
     elements: {
@@ -22,9 +22,9 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (!isLoaded) return; // wait until Clerk finishes loading
+    if (!isLoaded) return;
     if (isSignedIn) {
-      navigate("/"); // redirect if already signed in
+      navigate("/");
     }
   }, [isLoaded, isSignedIn, navigate]);
 
@@ -38,19 +38,42 @@ const Login = () => {
     fetchToken();
   }, [isSignedIn, getToken]);
 
-  // Show login page only after Clerk is loaded and user is not signed in
-  if (!isLoaded) return <div>Loading...</div>;
+  if (!isLoaded) return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-red-200 text-white px-4">
+      
+      {/* Header */}
+      <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center drop-shadow-lg">
+        Welcome to CoinKeeper
+      </h1>
+
       <SignedOut>
-        <SignUpButton mode="modal" />
-        <SignInButton mode="modal" />
+        <div className="flex flex-col md:flex-row gap-4">
+          <SignInButton mode="modal">
+            <button className="px-8 py-3 bg-white text-indigo-600 font-semibold rounded-lg shadow-md hover:bg-gray-100 transition">
+              Sign In
+            </button>
+          </SignInButton>
+
+          <SignUpButton mode="modal">
+            <button className="px-8 py-3 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-800 transition">
+              Sign Up
+            </button>
+          </SignUpButton>
+        </div>
       </SignedOut>
 
       <SignedIn>
-        <UserButton appearance={userButtonAppearance} />
+        <div className="mt-6">
+          <UserButton appearance={userButtonAppearance} />
+        </div>
       </SignedIn>
+
+      {/* Footer / tagline */}
+      <p className="mt-10 text-sm md:text-base text-indigo-100 text-center max-w-md">
+        Securely track your income and expenses with CoinKeeper. Your finances, simplified.
+      </p>
     </div>
   );
 };
