@@ -36,7 +36,7 @@ const Dashboard = () => {
       }
 
     } catch (error) {
-        console.log("DIdnt recieve data", error);
+        console.log("Didnt recieve data", error);
         
     } finally{
       setLoading(false)

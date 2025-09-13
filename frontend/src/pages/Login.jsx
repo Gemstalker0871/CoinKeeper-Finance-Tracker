@@ -32,7 +32,7 @@ const Login = () => {
     const fetchToken = async () => {
       if (isSignedIn) {
         const token = await getToken();
-        console.log("🔑 Clerk JWT Token:", token);
+        // console.log("🔑 Clerk JWT Token:", token);
       }
     };
     fetchToken();
