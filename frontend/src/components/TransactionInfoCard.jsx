@@ -23,7 +23,7 @@ const TransactionInfoCard = ({ title, date, amount, type, hideDeleteBTN, onDelet
       <div className="flex items-center gap-2">
         <div className={`flex items-center gap-2 px-3 py-1.5 rounded-md ${getAmountStyles()}`}>
           <h6 className="text-xs font-medium">
-            {type === "income" ? "+" : "-"} ${amount}
+            {type === "income" ? "+" : "-"} Rs {amount}
           </h6>
           {type === "income" ? <LuTrendingUp /> : <LuTrendingDown />}
         </div>

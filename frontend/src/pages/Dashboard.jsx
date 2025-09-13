@@ -69,7 +69,7 @@ const Dashboard = () => {
           />
           <Infocard icon = {<LuHandCoins/>}
            label="Total Expense"
-           value={addThousandsSeparator(dashboardData?.totalExpensee || 0)}
+           value={addThousandsSeparator(dashboardData?.totalExpense || 0)}
            color="bg-pink-500"
           />
 
@@ -87,7 +87,7 @@ const Dashboard = () => {
           onSeeMore = {() => navigate("/expense")}
           />
 
-          <Last30DaysExpenses data={dashboardData?.last30DaysExpenses?.transactions || []} />
+          {/* <Last30DaysExpenses data={dashboardData?.last30DaysExpenses?.transactions || []} /> */}
 
         </div>
       </div>

@@ -11,7 +11,7 @@ export const getDashboardData = async (req, res) => {
       { $group: { _id: null, total: { $sum: "$amount" } } },
     ]);
 
-    const totalExpensee = await Expense.aggregate([
+    const totalExpense = await Expense.aggregate([
       { $match: { userId } },
       { $group: { _id: null, total: { $sum: "$amount" } } },
     ]);
@@ -55,9 +55,9 @@ export const getDashboardData = async (req, res) => {
 
     // --- Response ---
     res.json({
-      totalBalance: (totalIncome[0]?.total || 0) - (totalExpensee[0]?.total || 0),
+      totalBalance: (totalIncome[0]?.total || 0) - (totalExpense[0]?.total || 0),
       totalIncome: totalIncome[0]?.total || 0,
-      totalExpensee: totalExpensee[0]?.total || 0,
+      totalExpense: totalExpense[0]?.total || 0,
       last30DaysExpenses: {
         total: expenseLast30Days,
         transactions: last30DaysExpenseTransactions,

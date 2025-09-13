@@ -6,6 +6,7 @@ import Expenses from './pages/Expenses';
 import Income from './pages/Income';
 import { useAuth, RedirectToSignIn } from "@clerk/clerk-react";
 import { attachInterceptors } from "../src/utils/axiosInstance.js";
+import { Toaster } from 'react-hot-toast';
 
 const ProtectedRoute = ({ children }) => {
   const { isLoaded, isSignedIn } = useAuth();
@@ -31,7 +32,9 @@ function App() {
           <Route path='/income' element={<ProtectedRoute><Income /></ProtectedRoute>} />
         </Routes>
       </Router>
+      <Toaster position="top-right" />
     </div>
+
   );
 }
 
