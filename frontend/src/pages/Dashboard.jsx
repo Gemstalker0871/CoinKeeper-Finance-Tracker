@@ -79,12 +79,12 @@ const Dashboard = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
           <RecentTransactions
           transactions = {dashboardData?.recentTransactions}
-          onSeeMore={() => navigate("/expense")}
+          onSeeMore={() => navigate("/expenses")}
           />
 
 
           <ExpenseTransactions transactions = {dashboardData?.last30DaysExpenses?.transactions || []}
-          onSeeMore = {() => navigate("/expense")}
+          onSeeMore = {() => navigate("/expenses")}
           />
 
           {/* <Last30DaysExpenses data={dashboardData?.last30DaysExpenses?.transactions || []} /> */}
